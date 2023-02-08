@@ -18,25 +18,21 @@ const ICONS_BY_VARIANT = {
   error: AlertOctagon,
 }
 
-function Toast({ message, variant, isOpen, handleDismiss }) {
+function Toast({ variant, handleDismiss, children }) {
   const IconTag = ICONS_BY_VARIANT[variant]
 
   return (
-    <>
-      {isOpen && (
-        <div className={`${styles.toast} ${styles[variant]}`}>
-          <div className={styles.iconContainer}>
-            <IconTag size={24} />
-          </div>
-          <p className={styles.content}>{message}</p>
-          <button className={styles.closeButton} onClick={handleDismiss}>
-            <X size={24} />
-            <VisuallyHidden>Dismiss message</VisuallyHidden>
-          </button>
-        </div>
-      )}
-    </>
+    <div className={`${styles.toast} ${styles[variant]}`}>
+      <div className={styles.iconContainer}>
+        <IconTag size={24} />
+      </div>
+      <p className={styles.content}>{children}</p>
+      <button className={styles.closeButton} onClick={handleDismiss}>
+        <X size={24} />
+        <VisuallyHidden>Dismiss message</VisuallyHidden>
+      </button>
+    </div>
   )
 }
 
-export default Toast
+export default React.memo(Toast)
