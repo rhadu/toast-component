@@ -10,17 +10,17 @@ const VARIANT_OPTIONS = ["notice", "warning", "success", "error"]
 const INITIAL_VARIANT = VARIANT_OPTIONS[0]
 
 function ToastPlayground() {
-  const { toasts, setToasts } = React.useContext(ToastContext) 
+  const { addToast } = React.useContext(ToastContext)
   const [message, setMessage] = React.useState("")
   const [variant, setVariant] = React.useState(INITIAL_VARIANT)
+  const inputRef = React.useRef()
 
   function handleSubmit(event) {
     event.preventDefault()
-    const id = Math.random()
-    const nextToasts = [...toasts, { message, variant, id }]
-    setToasts(nextToasts)
+    addToast({ message, variant })
     setVariant(INITIAL_VARIANT)
     setMessage("")
+    inputRef.current.focus()
   }
 
   return (
@@ -30,7 +30,7 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      <ToastShelf/>
+      <ToastShelf />
 
       <form onSubmit={handleSubmit} className={styles.controlsWrapper}>
         <div className={styles.row}>
@@ -43,6 +43,7 @@ function ToastPlayground() {
           </label>
           <div className={styles.inputWrapper}>
             <textarea
+              ref={inputRef}
               id="message"
               required
               className={styles.messageInput}
