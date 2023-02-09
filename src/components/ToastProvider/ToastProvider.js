@@ -6,9 +6,9 @@ export const ToastContext = React.createContext()
 function ToastProvider({ children }) {
   const [toasts, setToasts] = React.useState([])
 
-  const addToast = React.useCallback(({ message, variant }) => {
+  const addToast = React.useCallback(({ message, variant, delay, autoHide }) => {
     const id = Math.random()
-    setToasts((currentToasts) => [...currentToasts, { message, variant, id }])
+    setToasts((currentToasts) => [...currentToasts, { message, variant, id, delay, autoHide }])
   }, [])
 
   const dismissToast = React.useCallback((id) => {

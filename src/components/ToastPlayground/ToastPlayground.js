@@ -13,11 +13,14 @@ function ToastPlayground() {
   const { addToast } = React.useContext(ToastContext)
   const [message, setMessage] = React.useState("")
   const [variant, setVariant] = React.useState(INITIAL_VARIANT)
+  const [autoHide, setAutoHide] = React.useState(true)
+  const [delay, setDelay] = React.useState(5000)
+  console.log({ autoHide })
   const inputRef = React.useRef()
 
   function handleSubmit(event) {
     event.preventDefault()
-    addToast({ message, variant })
+    addToast({ message, variant, autoHide, delay })
     setVariant(INITIAL_VARIANT)
     setMessage("")
     inputRef.current.focus()
@@ -73,7 +76,44 @@ function ToastPlayground() {
             ))}
           </div>
         </div>
-
+        <div className={styles.row}>
+          <div className={styles.label}>Auto Hide</div>
+          <div className={`${styles.inputWrapper}`}>
+            <label htmlFor="autohide">
+              <select
+                name="autohide"
+                id="autohide"
+                defaultValue={autoHide}
+                onChange={() => {
+                  setAutoHide((currentValue) => !currentValue)
+                }}
+              >
+                <option value={true}>True</option>
+                <option value={false}>False</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        {autoHide && (
+          <div className={styles.row}>
+            <label
+            htmlFor="delay"
+            className={styles.label}
+            style={{ alignSelf: "baseline" }}
+          >
+            Delay
+          </label>
+          <div className={styles.inputWrapper}>
+            <input
+              type='number'
+              id="delay"
+              className={styles.delayInput}
+              value={delay}
+              onChange={(event) => setDelay(event.target.value)}
+            />
+          </div>
+          </div>
+        )}
         <div className={styles.row}>
           <div className={styles.label} />
           <div className={`${styles.inputWrapper} ${styles.radioWrapper}`}>

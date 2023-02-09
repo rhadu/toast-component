@@ -111,6 +111,11 @@
   height: 4rem;
 }
 
+.delayInput {
+  display: block;
+  width: 25%;
+}
+
 .secondsInput {
   width: 3rem;
   padding: 0px;

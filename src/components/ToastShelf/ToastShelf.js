@@ -9,9 +9,9 @@ function ToastShelf() {
 
   return (
     <ol className={styles.wrapper}>
-      {toasts.map(({ message, variant, id }) => (
+      {toasts.map(({ message, variant, id, delay, autoHide }) => (
         <li key={id} className={styles.toastWrapper}>
-          <Toast autohide delay={15000} variant={variant} id={id}>
+          <Toast autohide={autoHide} delay={delay} variant={variant} id={id}>
             {message}
           </Toast>
         </li>
