@@ -9,7 +9,28 @@
   background: white;
   max-width: 100%;
   width: 350px;
+  overflow: hidden;
   box-shadow: var(--shadow-elevation-medium);
+}
+
+.countdown {
+  --duration: 5000ms;
+  position: absolute;
+  top: 0;
+  height: 8px;
+  right: 0;
+  animation: var(--duration) shrink linear forwards;
+  border-radius: 8px;
+}
+
+@keyframes shrink {
+  0% {
+    width: 100%;
+  } 
+
+  100% {
+    width: 0;
+  }
 }
 
 .content {
@@ -46,11 +67,17 @@
 .notice .iconContainer {
   color: var(--color-notice);
 }
+.notice .countdown {
+  background-color: var(--color-notice-countdown)
+}
 .warning {
   background: var(--color-warning-bg);
 }
 .warning .iconContainer {
   color: var(--color-warning);
+}
+.warning .countdown {
+  background-color: var(--color-warning-countdown)
 }
 .success {
   background: var(--color-success-bg);
@@ -58,9 +85,15 @@
 .success .iconContainer {
   color: var(--color-success);
 }
+.success .countdown {
+  background-color: var(--color-success-countdown)
+}
 .error {
   background: var(--color-error-bg);
 }
 .error .iconContainer {
   color: var(--color-error);
+}
+.error .countdown {
+  background-color: var(--color-error-countdown)
 }

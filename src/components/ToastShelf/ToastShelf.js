@@ -5,13 +5,13 @@ import Toast from "../Toast"
 import styles from "./ToastShelf.module.css"
 
 function ToastShelf() {
-  const { toasts, removeToast } = React.useContext(ToastContext)
+  const { toasts } = React.useContext(ToastContext)
 
   return (
     <ol className={styles.wrapper}>
       {toasts.map(({ message, variant, id }) => (
         <li key={id} className={styles.toastWrapper}>
-          <Toast variant={variant} handleDismiss={() => removeToast(id)}>
+          <Toast autohide delay={15000} variant={variant} id={id}>
             {message}
           </Toast>
         </li>

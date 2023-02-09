@@ -53,12 +53,16 @@ html {
 
   --color-notice: hsl(235deg 100% 50%);
   --color-notice-bg: hsl(235deg 0% 100%);
+  --color-notice-countdown: hsl(235, 70%, 60%);
   --color-warning: hsl(35deg 100% 46%);
   --color-warning-bg: hsl(40deg 100% 94%);
+  --color-warning-countdown: hsl(40deg 70% 60%);
   --color-success: hsl(120deg 80% 35%);
   --color-success-bg: hsl(120deg 90% 96%);
+  --color-success-countdown: hsl(120deg 50% 60%);
   --color-error: hsl(345deg 100% 50%);
   --color-error-bg: hsl(350deg 90% 96%);
+  --color-error-countdown: hsl(350deg 60% 60%);
 
   --shadow-color: 250deg 35% 11%;
   /* prettier-ignore */

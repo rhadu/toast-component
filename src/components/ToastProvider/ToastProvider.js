@@ -11,7 +11,7 @@ function ToastProvider({ children }) {
     setToasts((currentToasts) => [...currentToasts, { message, variant, id }])
   }, [])
 
-  const removeToast = React.useCallback((id) => {
+  const dismissToast = React.useCallback((id) => {
     setToasts((currentToasts) =>
       currentToasts.filter((toast) => toast.id !== id),
     )
@@ -21,11 +21,12 @@ function ToastProvider({ children }) {
     setToasts([])
   }, [])
   
+
   useEscapeKey(handleEscape)
 
   const value = React.useMemo(() => {
-    return { toasts, setToasts, addToast, removeToast }
-  }, [toasts, removeToast, addToast])
+    return { toasts, setToasts, addToast, dismissToast }
+  }, [toasts, dismissToast, addToast])
 
   return <ToastContext.Provider value={value}>{children}</ToastContext.Provider>
 }
